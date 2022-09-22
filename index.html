@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giphy API</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <img src="#" />
+    <button id="newBtn">NEW</button><br />
+
+    <input /><button id="searchBtn">Search</button>
+    <script>
+      const img = document.querySelector('img');
+      let q = 'dogs';
+
+      function fetchNewgif() {
+        fetch(
+          'https://api.giphy.com/v1/gifs/translate?api_key=byqETZYtjVS3cNVVgdJ9RoZ4QJGApt50&s=' +
+            q,
+          { mode: 'cors' }
+        )
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (response) {
+            img.src = response.data.images.original.url;
+          })
+          .catch((error) => {
+            console.error(
+              'There has been a problem with your fetch operation:',
+              error
+            );
+            alert('Something went wrong. Try a different search term.');
+          });
+      }
+      onload = fetchNewgif;
+
+      const newBtn = document.getElementById('newBtn');
+      newBtn.innerText = 'NEW GIF';
+      newBtn.addEventListener('click', () => {
+        img.src = '';
+        fetchNewgif();
+      });
+      const searchInput = document.querySelector('input');
+      const searchBtn = document.getElementById('searchBtn');
+      searchBtn.addEventListener('click', () => {
+        q = searchInput.value;
+        fetchNewgif();
+      });
+    </script>
+  </body>
+</html>
