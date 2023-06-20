@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giphy API</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <img src="#" />
+    <div class="container">
+      <div class="gif-info">
+        <img src="#" />
     <button id="newBtn">NEW</button><br />
 
-    <input /><button id="searchBtn">Search</button>
+    <div class="pt-2"><input /><button id="searchBtn">Search</button></div>
+
     <script>
       const img = document.querySelector('img');
       let q = 'dogs';
@@ -50,5 +54,8 @@
         fetchNewgif();
       });
     </script>
+      </div>
+
+    </div>
   </body>
 </html>
